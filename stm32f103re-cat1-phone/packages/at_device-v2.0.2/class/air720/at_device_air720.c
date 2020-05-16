@@ -783,7 +783,7 @@ static void air720_init_thread_entry(void *parameter)
             AT_SEND_CMD(client, resp, 0, 300, "AT+CIPMUX=1");
         }
 
-        AT_SEND_CMD(client, resp, 0, 300, "AT+CIPQSEND=0");
+        AT_SEND_CMD(client, resp, 0, 300, "AT+CIPQSEND=1"); //fast send mode ,recommend
 
         AT_SEND_CMD(client, resp, 0, 300, "AT+CSTT");
 
