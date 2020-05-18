@@ -797,6 +797,9 @@ static void air720_init_thread_entry(void *parameter)
             result = -RT_ERROR;
             goto __exit;
         }
+
+        AT_SEND_CMD(client, resp, 0, 300, "AT+SETVOLTE=1"); //AIR720UG MAKE PHONE CALL
+
         result = RT_EOK;
 
     __exit:
@@ -894,6 +897,8 @@ static int air720_init(struct at_device *device)
 
 #ifdef AT_USING_SOCKET
     air720_socket_init(device);
+    extern int air720_call_init(struct at_device * device);
+    air720_call_init(device);
 #endif
 
     /* add air720 device to the netdev list */
@@ -929,6 +934,49 @@ static int air720_reboot(struct at_device *device)
     air720_net_init(device);
     device->is_init = RT_TRUE;
     return RT_EOK;
+}
+
+static int air720_make_phone_call(struct at_device *device, void *arg)
+{
+    at_response_t resp = RT_NULL;
+    int result = RT_EOK;
+    struct at_client *client = device->client;
+    resp = at_create_resp(64, 0, rt_tick_from_millisecond(300));
+    if (resp == RT_NULL)
+    {
+        LOG_D("no memory for resp create.");
+        return (-RT_ERROR);
+    }
+
+    if (at_obj_exec_cmd(client, resp, "ATD%s;", arg) == RT_EOK)
+    {
+        result = RT_EOK;
+    }
+    else
+    {
+        LOG_D("\"AT+MIPLADDOBJ\" execute fail.");
+        result = (-RT_ERROR);
+    }
+    at_delete_resp(resp);
+    return result;
+}
+static int air720_hang_up_call(struct at_device *device)
+{
+    at_response_t resp = RT_NULL;
+    int result = RT_EOK;
+    struct at_client *client = device->client;
+    resp = at_create_resp(64, 0, rt_tick_from_millisecond(300));
+    if (resp == RT_NULL)
+    {
+        LOG_D("no memory for resp create.");
+        return (-RT_ERROR);
+    }
+    if (at_obj_exec_cmd(client, resp, "AT+CHUP") == RT_EOK)
+    {
+        result = RT_EOK;
+    }
+    at_delete_resp(resp);
+    return result;
 }
 
 static int air720_reset(struct at_device *device)
@@ -981,6 +1029,12 @@ static int air720_control(struct at_device *device, int cmd, void *arg)
         break;
     case AT_DEVICE_CTRL_REBOOT:
         result = air720_reboot(device);
+        break;
+    case AT_DEVICE_CTRL_MAKE_PHONE_CALL:
+        result = air720_make_phone_call(device, arg);
+        break;
+    case AT_DEVICE_CTRL_HANG_UP_CALL:
+        result = air720_hang_up_call(device);
         break;
     default:
         LOG_E("input error control command(%d).", cmd);

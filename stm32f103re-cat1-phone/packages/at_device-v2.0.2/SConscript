@@ -109,6 +109,7 @@ if GetDepend(['AT_DEVICE_USING_AIR720']):
     src += Glob('class/air720/at_device_air720.c')
     if GetDepend(['AT_USING_SOCKET']):
         src += Glob('class/air720/at_socket_air720.c')
+        src += Glob('class/air720/at_call_air720.c')
     if GetDepend(['AT_DEVICE_AIR720_SAMPLE']):
         src += Glob('samples/at_sample_air720.c')
         

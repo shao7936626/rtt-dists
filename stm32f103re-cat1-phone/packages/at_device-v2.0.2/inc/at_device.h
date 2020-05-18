@@ -73,6 +73,8 @@ extern "C" {
 #define AT_DEVICE_CTRL_GET_GPS         0x0BL
 #define AT_DEVICE_CTRL_GET_VER         0x0CL
 #define AT_DEVICE_CTRL_REBOOT          0x0DL
+#define AT_DEVICE_CTRL_MAKE_PHONE_CALL 0x0EL
+#define AT_DEVICE_CTRL_HANG_UP_CALL    0x0FL
 
 /* Name type */
 #define AT_DEVICE_NAMETYPE_DEVICE      0x01

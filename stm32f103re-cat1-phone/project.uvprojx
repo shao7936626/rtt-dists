@@ -548,6 +548,11 @@
               <FilePath>packages\at_device-v2.0.2\class\air720\at_socket_air720.c</FilePath>
             </File>
             <File>
+              <FileName>at_call_air720.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\at_device-v2.0.2\class\air720\at_call_air720.c</FilePath>
+            </File>
+            <File>
               <FileName>at_sample_air720.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\at_device-v2.0.2\samples\at_sample_air720.c</FilePath>

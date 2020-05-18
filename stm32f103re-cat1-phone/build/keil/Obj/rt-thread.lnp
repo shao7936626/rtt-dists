@@ -29,6 +29,7 @@
 ".\build\keil\obj\at_device.o"
 ".\build\keil\obj\at_device_air720.o"
 ".\build\keil\obj\at_socket_air720.o"
+".\build\keil\obj\at_call_air720.o"
 ".\build\keil\obj\at_sample_air720.o"
 ".\build\keil\obj\fal.o"
 ".\build\keil\obj\fal_flash.o"

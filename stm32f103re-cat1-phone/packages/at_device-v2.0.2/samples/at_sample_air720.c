@@ -24,30 +24,46 @@
 
 #include <at_device_air720.h>
 
-#define LOG_TAG                        "at.sample"
+#define LOG_TAG "at.sample"
 #include <at_log.h>
 
-#define AIR720_SAMPLE_DEIVCE_NAME     "air720"
+#define AIR720_SAMPLE_DEIVCE_NAME "air720"
 
 static struct at_device_air720 sim0 =
-{
-    AIR720_SAMPLE_DEIVCE_NAME,
-    AIR720_SAMPLE_CLIENT_NAME,
+    {
+        AIR720_SAMPLE_DEIVCE_NAME,
+        AIR720_SAMPLE_CLIENT_NAME,
 
-    AIR720_SAMPLE_POWER_PIN,
-    AIR720_SAMPLE_STATUS_PIN,
-    AIR720_SAMPLE_RECV_BUFF_LEN,
+        AIR720_SAMPLE_POWER_PIN,
+        AIR720_SAMPLE_STATUS_PIN,
+        AIR720_SAMPLE_RECV_BUFF_LEN,
 };
 
 static int air720_device_register(void)
 {
     struct at_device_air720 *air720 = &sim0;
-    
+
     return at_device_register(&(air720->device),
                               air720->device_name,
                               air720->client_name,
                               AT_DEVICE_CLASS_AIR720,
-                              (void *) air720);
+                              (void *)air720);
 }
 //INIT_APP_EXPORT(air720_device_register);
-MSH_CMD_EXPORT(air720_device_register,air720_device_register);
+MSH_CMD_EXPORT(air720_device_register, air720_device_register);
+
+static int make_phone_call(uint8_t argc, char **argv)
+{
+    struct at_device_air720 *air720 = &sim0;
+    at_device_control(&(air720->device), AT_DEVICE_CTRL_MAKE_PHONE_CALL, argv[1]);
+}
+
+MSH_CMD_EXPORT(make_phone_call, air720_make_phone_call);
+
+static int hang_up_phone(void)
+{
+    struct at_device_air720 *air720 = &sim0;
+    at_device_control(&(air720->device), AT_DEVICE_CTRL_HANG_UP_CALL, RT_NULL);
+}
+
+MSH_CMD_EXPORT(hang_up_phone, air720_hang_up_phone);

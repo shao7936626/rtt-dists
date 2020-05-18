@@ -22,21 +22,27 @@ Dialog DLL:      TCM.DLL V1.36.5.0
  
 <h2>Project:</h2>
 C:\workspace\github\projects\rtt-dists\stm32f103re-cat1-phone\project.uvprojx
-Project File Date:  05/14/2020
+Project File Date:  05/16/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'rt-thread'
-compiling at_socket_air720.c...
-packages\at_device-v2.0.2\class\air720\at_socket_air720.c(342): warning:  #940-D: missing return statement at end of non-void function "air720_socket_quick_send" 
+compiling at_call_air720.c...
+packages\at_device-v2.0.2\class\air720\at_call_air720.c(132): warning:  #940-D: missing return statement at end of non-void function "check_me_status" 
   }
-packages\at_device-v2.0.2\class\air720\at_socket_air720.c(340): warning:  #177-D: function "air720_socket_quick_send"  was declared but never referenced
-  static int air720_socket_quick_send(struct at_socket *socket, const char *buff, size_t bfsz, enum at_socket_type type)
-packages\at_device-v2.0.2\class\air720\at_socket_air720.c: 2 warnings, 0 errors
+packages\at_device-v2.0.2\class\air720\at_call_air720.c(235): warning:  #940-D: missing return statement at end of non-void function "call_event_process" 
+  }
+packages\at_device-v2.0.2\class\air720\at_call_air720.c(218): warning:  #177-D: variable "rst"  was declared but never referenced
+      rt_err_t rst = RT_EOK;
+packages\at_device-v2.0.2\class\air720\at_call_air720.c(81): warning:  #177-D: function "air720_call_event_send"  was declared but never referenced
+  static int air720_call_event_send(struct at_device *device, uint32_t event)
+packages\at_device-v2.0.2\class\air720\at_call_air720.c(86): warning:  #177-D: function "air720_call_event_recv"  was declared but never referenced
+  static int air720_call_event_recv(struct at_device *device, uint32_t event, uint32_t timeout, rt_uint8_t option)
+packages\at_device-v2.0.2\class\air720\at_call_air720.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=187218 RO-data=21886 RW-data=1392 ZI-data=7296  
+Program Size: Code=190790 RO-data=22226 RW-data=1396 ZI-data=7452  
 After Build - User command #1: fromelf --bin .\build\keil\Obj\rt-thread.axf --output rtthread.bin
-".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 2 Warning(s).
+".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
