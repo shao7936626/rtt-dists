@@ -1,13 +1,13 @@
 [
  {
-  "path": "/packages/iot/pahomqtt", 
-  "ver": "v1.1.0", 
-  "name": "PAHOMQTT"
- }, 
- {
   "path": "/packages/iot/webclient", 
   "ver": "v2.1.2", 
   "name": "WEBCLIENT"
+ }, 
+ {
+  "path": "/packages/iot/mymqtt", 
+  "ver": "latest", 
+  "name": "MYMQTT"
  }, 
  {
   "path": "/packages/iot/netutils", 

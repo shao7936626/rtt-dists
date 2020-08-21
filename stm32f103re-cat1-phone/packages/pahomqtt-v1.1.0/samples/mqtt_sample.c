@@ -25,11 +25,11 @@
  * tcp://[fe80::20c:29ff:fe9a:a07e]:1883
  * ssl://[fe80::20c:29ff:fe9a:a07e]:1884
  */
-#define MQTT_URI                "tcp://iot.eclipse.org:1883"
-#define MQTT_USERNAME           "admin"
-#define MQTT_PASSWORD           "admin"
-#define MQTT_SUBTOPIC           "/mqtt/test"
-#define MQTT_PUBTOPIC           "/mqtt/test"
+#define MQTT_URI                "tcp://mq.test.adxinfo.cn:1883"
+#define MQTT_USERNAME           "usertest1"
+#define MQTT_PASSWORD           "J2tVIuKjM1keT8aj"
+#define MQTT_SUBTOPIC           "Device.security.warner"
+#define MQTT_PUBTOPIC           "Device.security.warner"
 #define MQTT_WILLMSG            "Goodbye!"
 
 /* define MQTT client context */

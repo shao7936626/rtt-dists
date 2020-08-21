@@ -1,0 +1,42 @@
+[
+ {
+  "path": "/packages/iot/webclient", 
+  "ver": "v2.1.2", 
+  "name": "WEBCLIENT"
+ }, 
+ {
+  "path": "/packages/iot/mymqtt", 
+  "ver": "latest", 
+  "name": "MYMQTT"
+ }, 
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.1.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/iot/at_device", 
+  "ver": "v2.0.2", 
+  "name": "AT_DEVICE"
+ }, 
+ {
+  "path": "/packages/iot/ota_downloader", 
+  "ver": "latest", 
+  "name": "OTA_DOWNLOADER"
+ }, 
+ {
+  "path": "/packages/system/fal", 
+  "ver": "v0.5.0", 
+  "name": "FAL"
+ }, 
+ {
+  "path": "/packages/system/littlefs", 
+  "ver": "v2.1.4", 
+  "name": "LITTLEFS"
+ }, 
+ {
+  "path": "/packages/peripherals/sht2x", 
+  "ver": "latest", 
+  "name": "SHT2X"
+ }
+]

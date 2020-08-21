@@ -28,12 +28,12 @@
  * tcp://[fe80::20c:29ff:fe9a:a07e]:1883
  * ssl://[fe80::20c:29ff:fe9a:a07e]:1884
  */
-#define MQTT_TEST_SERVER_URI    "tcp://iot.eclipse.org:1883"
-#define MQTT_CLIENTID           "rtthread-mqtt"
-#define MQTT_USERNAME           "admin"
-#define MQTT_PASSWORD           "admin"
-#define MQTT_SUBTOPIC           "/mqtt/test"
-#define MQTT_PUBTOPIC           "/mqtt/test"
+#define MQTT_TEST_SERVER_URI    "tcp://mq.tongxinmao.com:18831"
+#define MQTT_CLIENTID           "fkjshdfklhjsadfmqttshaoliang"
+#define MQTT_USERNAME           "TEST"
+#define MQTT_PASSWORD           "TEST"
+#define MQTT_SUBTOPIC           "Device.security.warner"
+#define MQTT_PUBTOPIC           "Device.security.warner"
 #define MQTT_WILLMSG            "Goodbye!"
 #define MQTT_TEST_QOS           1
 #define MQTT_PUB_SUB_BUF_SIZE   1024

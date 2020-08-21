@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, LFS_CONFIG=lfs_config.h, RT_USING_ARM_LIBC, STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>.;rt-thread\include;applications;.;board;board\CubeMX_Config\Inc;libraries\HAL_Drivers;libraries\HAL_Drivers\config;libraries\HAL_Drivers\drv_flash;packages\at_device-v2.0.2\inc;packages\at_device-v2.0.2\class\air720;packages\fal-v0.5.0\inc;ports\fal;packages\littlefs-v2.1.4;packages\netutils-v1.1.0\ntp;packages\ota_downloader-latest;packages\pahomqtt-v1.1.0\MQTTPacket\src;packages\pahomqtt-v1.1.0\MQTTClient-RT;packages\webclient-v2.1.2\inc;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\at\include;rt-thread\components\net\at\at_socket;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ymodem;libraries\STM32F1xx_HAL\CMSIS\Device\ST\STM32F1xx\Include;libraries\STM32F1xx_HAL\STM32F1xx_HAL_Driver\Inc;libraries\STM32F1xx_HAL\CMSIS\Include</IncludePath>
+              <IncludePath>.;rt-thread\include;applications;.;board;board\CubeMX_Config\Inc;libraries\HAL_Drivers;libraries\HAL_Drivers\config;libraries\HAL_Drivers\drv_flash;packages\at_device-v2.0.2\inc;packages\at_device-v2.0.2\class\air720;packages\fal-v0.5.0\inc;ports\fal;packages\littlefs-v2.1.4;packages\mymqtt-latest\MQTTPacket\src;packages\mymqtt-latest\MQTTClient-C;packages\netutils-v1.1.0\ntp;packages\ota_downloader-latest;packages\webclient-v2.1.2\inc;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\at\include;rt-thread\components\net\at\at_socket;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ymodem;libraries\STM32F1xx_HAL\CMSIS\Device\ST\STM32F1xx\Include;libraries\STM32F1xx_HAL\STM32F1xx_HAL_Driver\Inc;libraries\STM32F1xx_HAL\CMSIS\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -679,6 +679,66 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>my-mqtt</GroupName>
+          <Files>
+            <File>
+              <FileName>MQTTConnectClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTConnectClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTConnectServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTConnectServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTDeserializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTDeserializePublish.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTFormat.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTFormat.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTPacket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTPacket.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSerializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTSerializePublish.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTSubscribeClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSubscribeServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTSubscribeServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTUnsubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTUnsubscribeClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTUnsubscribeServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTPacket\src\MQTTUnsubscribeServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>mqtt_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mymqtt-latest\MQTTClient-C\mqtt_client.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>NetUtils</GroupName>
           <Files>
             <File>
@@ -700,76 +760,6 @@
               <FileName>ymodem_ota.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\ota_downloader-latest\src\ymodem_ota.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>paho-mqtt</GroupName>
-          <Files>
-            <File>
-              <FileName>MQTTConnectClient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTConnectClient.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTConnectServer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTConnectServer.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTDeserializePublish.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTDeserializePublish.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTFormat.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTFormat.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTPacket.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTPacket.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTSerializePublish.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTSerializePublish.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTSubscribeClient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTSubscribeClient.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTSubscribeServer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTSubscribeServer.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTUnsubscribeClient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTUnsubscribeClient.c</FilePath>
-            </File>
-            <File>
-              <FileName>MQTTUnsubscribeServer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTPacket\src\MQTTUnsubscribeServer.c</FilePath>
-            </File>
-            <File>
-              <FileName>paho_mqtt_pipe.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\MQTTClient-RT\paho_mqtt_pipe.c</FilePath>
-            </File>
-            <File>
-              <FileName>mqtt_sample.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\samples\mqtt_sample.c</FilePath>
-            </File>
-            <File>
-              <FileName>mqtt_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\pahomqtt-v1.1.0\tests\mqtt_test.c</FilePath>
             </File>
           </Files>
         </Group>
