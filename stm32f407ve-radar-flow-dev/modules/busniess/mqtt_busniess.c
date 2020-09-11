@@ -76,17 +76,29 @@ static void mqtt_sub_callback(mqtt_client *c, message_data *msg_data)
             {
                 item = cJSON_GetObjectItem(root, "cmd");
                 rt_kprintf("the cmd is %s", item->valuestring);
+                if (rt_strcmp("update", item->valuestring) == 0)
+                {
+                    item = cJSON_GetObjectItem(root, "userdata");
+                    item = cJSON_GetObjectItem(item, "url");
+                    rt_kprintf("get update system cmd, system will download new firmware from %s after 3s \n", item->valuestring);
+                    //close useless resoure
+                    rt_thread_mdelay(3000);
+                    extern void radar_ota(const char* uri);
+										radar_ota(item->valuestring);
+                  
+                }
+                else if (rt_strcmp("upload", item->valuestring) == 0)
+                {
+                }
             }
         }
         else
         {
         }
-        
+
         //cJSON_Delete(root);
         free(root);
-
     }
-
 }
 
 static void mqtt_sub_default_callback(mqtt_client *c, message_data *msg_data)

@@ -1,5 +1,5 @@
 #include <rtthread.h>
-
+#include <stdlib.h>
 #define _UART_NAME "uart6" /* 串口设备名称 */
 
 /* 串口接收消息结构*/
@@ -30,13 +30,18 @@ static rt_err_t uart_input(rt_device_t dev, rt_size_t size)
     return result;
 }
 
+#define HEIGHT_RADAR_DATA_LEN 21
+
+float average_height_data;
+float total_height_data;
+
 static void serial_thread_entry(void *parameter)
 {
     struct rx_msg msg;
     rt_err_t result;
     rt_uint32_t rx_length;
     static char rx_buffer[RT_SERIAL_RB_BUFSZ + 1];
-
+    rt_uint16_t get_times = 0;
     while (1)
     {
         rt_memset(&msg, 0, sizeof(msg));
@@ -47,12 +52,45 @@ static void serial_thread_entry(void *parameter)
             /* 从串口读取数据*/
             rx_length = rt_device_read(msg.dev, 0, rx_buffer, msg.size);
             rx_buffer[rx_length] = '\0';
-         
+
             /* 打印数据 */
-            //rt_kprintf("%s\n", rx_buffer);
+            //rt_kprintf("the data is %s\n", rx_buffer);
 
-            
+            //rt_kprintf("the rx_buffer len is %d\n",rt_strlen(rx_buffer));
 
+            if (rt_strlen(rx_buffer) == HEIGHT_RADAR_DATA_LEN)
+            {
+                if (rx_buffer[0] - 'R' == 0)
+                {
+                    if (rx_buffer[10] - 'R' == 0)
+                    {
+                        //rt_kprintf("the data is %s\n", rx_buffer);
+                        float height_data = 0.0;
+                        char f_data[8] = {0};
+                        sprintf(f_data, "%.*s", 7, &rx_buffer[12]);
+                        // rt_kprintf("the f_data is %s\n", f_data);
+                        height_data = atof(f_data);
+                        get_times++;
+                        total_height_data += height_data;
+
+                        if (get_times == 500)
+                        {
+
+                            get_times = 0;
+                            average_height_data = total_height_data / 500.0;
+
+                            int a = (int)average_height_data;
+                            int b = (average_height_data - a) * 1000;
+
+                            rt_kprintf(" the average_height is %d.%d\n", a, b);
+                            total_height_data = 0;
+                        }
+                        //int a = (int)height_data;
+                        //int b = (height_data - a) * 1000;
+                        //rt_kprintf("the height_data is %d.%d \n", a, b);
+                    }
+                }
+            }
         }
     }
 }

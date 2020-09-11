@@ -11,8 +11,10 @@
 
 // #define OTA_TEST
 
-#define S_VER "1.0.5"
+#define S_VER "1.0.7"
 #define H_VER "1.0.2"
+
+#define PIN_RUN GET_PIN(A, 11)
 
 rt_uint8_t internet_up = 0;
 
@@ -25,5 +27,15 @@ int main(void)
 	extern void http_ota(uint8_t argc, char **argv);
 	http_ota(1, RT_NULL);
 #endif
+	rt_pin_mode(PIN_RUN, PIN_MODE_OUTPUT);
+	
+	while (1)
+	{
+		rt_pin_write(PIN_RUN, PIN_HIGH);
+		rt_thread_mdelay(1000);
+		rt_pin_write(PIN_RUN, PIN_LOW);
+		rt_thread_mdelay(1000);
+	}
+
 	return RT_EOK;
 }

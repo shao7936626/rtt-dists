@@ -93,10 +93,12 @@
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 2048
+#define RT_USING_HWTIMER
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_ADC
+#define RT_USING_DAC
 #define RT_USING_MTD_NOR
 #define RT_USING_RTC
 #define RT_USING_SOFT_RTC
@@ -291,6 +293,8 @@
 #define BSP_I2C1_SDA_PIN 23
 #define BSP_USING_ADC
 #define BSP_USING_ADC1
+#define BSP_USING_TIM
+#define BSP_USING_TIM3
 #define BSP_USING_ON_CHIP_FLASH
 #define BSP_USING_WDT
 

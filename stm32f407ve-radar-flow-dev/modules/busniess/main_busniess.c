@@ -68,7 +68,7 @@ static int get_hum(void)
     upload_radar_data.humi = sht20_read_humidity(global_sht20);
     return 0;
 }
-
+extern char imei[];
 static int get_data(int heart)
 {
     if (heart)
@@ -83,7 +83,7 @@ static int get_data(int heart)
         cJSON_AddItemToObject(root, "body", body);
 
         cJSON_AddItemToObject(body, "VER", cJSON_CreateString("0.1"));
-
+        cJSON_AddItemToObject(body, "imei", cJSON_CreateString(imei));
         // cJSON_AddItemToObject(body, "0029", cJSON_CreateNumber((double)upload_radar_data.temp));
         char temp[6] = {0};
         sprintf(temp, "%2.1f", upload_radar_data.temp);
@@ -93,16 +93,21 @@ static int get_data(int heart)
         sprintf(humi, "%2.1f", upload_radar_data.humi);
         cJSON_AddItemToObject(body, "humidity", cJSON_CreateString(humi));
         //cJSON_AddItemToObject(body, "0043", cJSON_CreateString("0"));
-
-        cJSON_AddItemToObject(body, "RSSI", cJSON_CreateNumber(rssi));
+        char upload_rssi[6] = {0};
+        sprintf(upload_rssi, "%d", rssi);
+        cJSON_AddItemToObject(body, "RSSI", cJSON_CreateString(upload_rssi));
 
         //height gauge
-        cJSON_AddItemToObject(body, "height_gauge", cJSON_CreateString("1.6"));
+        extern float average_height_data;
+        char upload_height[6] = {0};
+        sprintf(upload_height, "%.3f", average_height_data);
+        cJSON_AddItemToObject(body, "height_gauge", cJSON_CreateString(upload_height));
         //
 
         //rain gauge
-        cJSON_AddItemToObject(body, "rain_gauge", cJSON_CreateString("0.01"));
-
+        extern rt_uint16_t rain_counts;
+        cJSON_AddItemToObject(body, "rain_gauge", cJSON_CreateNumber(rain_counts / 2));
+        rain_counts = 0;
         //ADC
         cJSON_AddItemToObject(body, "ADC", cJSON_CreateString("23.97"));
         cJSON_AddItemToObject(body, "water_level", cJSON_CreateString("0.0"));
