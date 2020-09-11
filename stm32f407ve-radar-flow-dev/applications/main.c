@@ -11,7 +11,7 @@
 
 // #define OTA_TEST
 
-#define S_VER "1.0.7"
+#define S_VER "1.0.8"
 #define H_VER "1.0.2"
 
 #define PIN_RUN GET_PIN(A, 11)
@@ -21,7 +21,7 @@ rt_uint8_t internet_up = 0;
 int main(void)
 {
 
-	rt_kprintf("the software_version is %s\nthe hardware_version is %s\n", S_VER, H_VER);
+	rt_kprintf("\nthe software_version is %s\nthe hardware_version is %s\n", S_VER, H_VER);
 #ifdef OTA_TEST
 	rt_thread_mdelay(60000);
 	extern void http_ota(uint8_t argc, char **argv);

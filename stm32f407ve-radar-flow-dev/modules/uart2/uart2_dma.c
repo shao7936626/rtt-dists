@@ -91,7 +91,7 @@ static int uart2_dma(int argc, char *argv[])
     rt_device_set_rx_indicate(serial, uart_input);
 
     /* 创建 serial 线程 */
-    rt_thread_t thread = rt_thread_create("serial", serial_thread_entry, RT_NULL, 1024, 26, 10);
+    rt_thread_t thread = rt_thread_create("uart2", serial_thread_entry, RT_NULL, 1024, 26, 10);
     /* 创建成功则启动线程 */
     if (thread != RT_NULL)
     {

@@ -14,6 +14,8 @@
 #include "sht20.h"
 #include "cJSON.h"
 
+#define SOFT_VER "1.0.8"
+
 #define BUSNIESS_STACK_SIZE 1024
 #define BUSNIESS_THREAD_PRIORITY 8
 #define BUSNIESS_TIMESLICE 20
@@ -82,7 +84,7 @@ static int get_data(int heart)
 
         cJSON_AddItemToObject(root, "body", body);
 
-        cJSON_AddItemToObject(body, "VER", cJSON_CreateString("0.1"));
+        cJSON_AddItemToObject(body, "VER", cJSON_CreateString(SOFT_VER));
         cJSON_AddItemToObject(body, "imei", cJSON_CreateString(imei));
         // cJSON_AddItemToObject(body, "0029", cJSON_CreateNumber((double)upload_radar_data.temp));
         char temp[6] = {0};
@@ -109,7 +111,11 @@ static int get_data(int heart)
         cJSON_AddItemToObject(body, "rain_gauge", cJSON_CreateNumber(rain_counts / 2));
         rain_counts = 0;
         //ADC
-        cJSON_AddItemToObject(body, "ADC", cJSON_CreateString("23.97"));
+        extern rt_uint32_t powc_vol;
+        char upload_powc[6] = {0};
+        sprintf(upload_powc, "%d", powc_vol);
+        cJSON_AddItemToObject(body, "ADC", cJSON_CreateString(upload_powc));
+
         cJSON_AddItemToObject(body, "water_level", cJSON_CreateString("0.0"));
         cJSON_AddItemToObject(body, "Preset_Value_Level", cJSON_CreateString("10.0"));
         cJSON_AddItemToObject(body, "Correction_Value_Level", cJSON_CreateString("0.0"));
